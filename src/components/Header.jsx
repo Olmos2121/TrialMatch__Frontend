@@ -1,28 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faInfoCircle, faShieldAlt, faUserPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faInfoCircle, faUserPlus, faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import logo from "../assets/images/Logo.png";
 import "../styles/Header.css";
 
-const Header = () => {
+export const Header = () => {
     return (
         <header className="header">
+            <NavLink to="/" className="logo-container">
+                <img src={logo} alt="TrialMatch" className="logo-img" /> 
+                <h2 className="h2">TrialMatch</h2>
+            </NavLink>
             <nav className="nav">
-                <Link to="/" className="nav-link">
+                <NavLink exact to="/" className="nav-link" activeClassName="active">
                     <FontAwesomeIcon icon={faHome} className="icon" /> Inicio
-                </Link>
-                <Link to="/about-us" className="nav-link">
+                </NavLink>
+                <NavLink to="/about-us" className="nav-link" activeClassName="active">
                     <FontAwesomeIcon icon={faInfoCircle} className="icon" /> Sobre Nosotros
-                </Link>
-                <Link to="/register" className="nav-link">
+                </NavLink>
+                <NavLink to="/register" className="nav-link" activeClassName="active">
                     <FontAwesomeIcon icon={faUserPlus} className="icon" /> Registrarse
-                </Link>
-                <Link to="/login" className="nav-link">
+                </NavLink>
+                <NavLink to="/login" className="nav-link" activeClassName="active">
                     <FontAwesomeIcon icon={faSignInAlt} className="icon" /> Iniciar Sesión
-                </Link>
+                </NavLink>
             </nav>
+            <div className="relleno">
+                <p>a </p>
+            </div>
         </header>
     );
-}
-
-export default Header;
+};
