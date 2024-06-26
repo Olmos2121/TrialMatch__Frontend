@@ -4,7 +4,7 @@ import { Home } from './views/Home.jsx';
 import AboutUs from './views/AboutUs.jsx';
 import PrivacyPolicy from './views/PrivacyPolicy.jsx';
 import { Register } from './views/Register.jsx';
-import Login from './views/Login.jsx';
+import { Login } from './views/Login.jsx';
 import './styles/index.css';
 import { ToastContainer } from 'react-toastify';
 

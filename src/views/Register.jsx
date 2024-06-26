@@ -117,7 +117,6 @@ export const Register = () => {
                                         placeholder='Ingrese su nombre'
                                         value={formData.firstName}
                                         onChange={handleChange}
-                                        className='input_name'
                                     />
                                 </div>
                                 <div className='dataLabel_container'>
@@ -128,7 +127,6 @@ export const Register = () => {
                                         placeholder='Ingrese su apellido'
                                         value={formData.lastName}
                                         onChange={handleChange}
-                                        className='input_lastname'
                                     />
                                 </div>
                             </div>
@@ -141,7 +139,6 @@ export const Register = () => {
                                         placeholder='Ingrese su Email'
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className='input_email'
                                     />
                                     {errorEmail && (
                                         <p className="error">
@@ -157,7 +154,6 @@ export const Register = () => {
                                         placeholder='Ingrese su contraseña'
                                         value={formData.password}
                                         onChange={handleChange}
-                                        className='input_password'
                                     />
                                 </div>
                             </div>
