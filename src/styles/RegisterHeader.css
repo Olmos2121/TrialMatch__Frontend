@@ -1,0 +1,14 @@
+.registerHeader {
+    padding: 1.5em 0;
+    display: flex;
+    justify-content: space-between;
+    height: 7em;
+}
+
+.registerHeader h2 {
+    color: #2C9CED;
+    display: inline-block;
+    font-size: 3em;
+    margin-left: 0.5em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

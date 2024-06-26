@@ -13,7 +13,7 @@ export const Header = () => {
                 <h2 className="h2">TrialMatch</h2>
             </NavLink>
             <nav className="nav">
-                <NavLink exact to="/" className="nav-link" activeClassName="active">
+                <NavLink to="/" className="nav-link" activeClassName="active">
                     <FontAwesomeIcon icon={faHome} className="icon" /> Inicio
                 </NavLink>
                 <NavLink to="/about-us" className="nav-link" activeClassName="active">
