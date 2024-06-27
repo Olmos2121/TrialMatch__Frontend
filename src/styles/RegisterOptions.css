@@ -1,0 +1,69 @@
+.registerOptions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.registerOptions h1 {
+    font-size: 6vh;
+    margin-bottom: 5vh;
+}
+
+.registerOptions h2 {
+    font-size: 3vh;
+    margin-bottom: 7vh;
+    color: #4D5959;
+}
+
+.loginBtn {
+    width: 100%;
+    height: 7vh;
+    justify-content: space-around;
+    display: flex;
+    font-size: 3vh;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.registerOptions button {
+    background-color: #1c689f;
+    height: 100%;
+    width: 40%;
+    color: white;
+    margin-bottom: 2vh;
+    font-size: 2.8vh;
+    padding: 1.1vh 2.1vh;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.registerOptions button:hover {
+    background-color: #2C9CED;
+    transform: scale(1.05);
+}
+
+.registerOptions button:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(4, 49, 51, 0.5);
+}
+
+.registerOptions button:active {
+    transform: scale(0.95);
+}
+
+.registerOptions p {
+    margin-top: 2vh;
+    font-size: 2.1vh;
+    color: #4D5959;
+}
+
+.registerOptions a {
+    color: #91C2E3;
+    text-decoration: none;
+}

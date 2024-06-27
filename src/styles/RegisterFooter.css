@@ -1,0 +1,17 @@
+.register_footer{
+    color: #000;
+    text-align:center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    height: 3.7em;
+    width: 100%;
+    justify-content:center;
+    display: flex;
+}
+
+.register_footer a{
+    color: #91C2E3;
+    margin-right: 0.8em;
+    text-decoration: none;
+}

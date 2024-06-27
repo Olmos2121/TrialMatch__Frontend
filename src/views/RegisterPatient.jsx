@@ -5,7 +5,7 @@ import { register } from '../apis/registerApi';
 import { RegisterHeader } from '../components/RegisterHeader';
 import { toast } from 'react-toastify';
 
-export const Register = () => {
+export const RegisterPatient = () => {
     const navigate = useNavigate();
     const [error, setError] = useState(false);
     const [errorEmail, setErrorInvalidEmail] = useState(false);
