@@ -13,16 +13,16 @@ export const Header = () => {
                 <h2 className="h2">TrialMatch</h2>
             </NavLink>
             <nav className="nav">
-                <NavLink to="/" className="nav-link" activeClassName="active">
+                <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                     <FontAwesomeIcon icon={faHome} className="icon" /> Inicio
                 </NavLink>
-                <NavLink to="/about-us" className="nav-link" activeClassName="active">
+                <NavLink to="/about-us" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                     <FontAwesomeIcon icon={faInfoCircle} className="icon" /> Sobre Nosotros
                 </NavLink>
-                <NavLink to="/register" className="nav-link" activeClassName="active">
+                <NavLink to="/register" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                     <FontAwesomeIcon icon={faUserPlus} className="icon" /> Registrarse
                 </NavLink>
-                <NavLink to="/login" className="nav-link" activeClassName="active">
+                <NavLink to="/login" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                     <FontAwesomeIcon icon={faSignInAlt} className="icon" /> Iniciar Sesión
                 </NavLink>
             </nav>
