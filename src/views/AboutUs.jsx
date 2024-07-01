@@ -6,7 +6,6 @@ import { Footer } from '../components/Footer';
 const AboutUs = () => {
     return (
         <>
-            <Header />
             <div className='about-us'>
                 <h1>Sobre Nosotros</h1>
                 <h2>Nuestra Misión</h2>

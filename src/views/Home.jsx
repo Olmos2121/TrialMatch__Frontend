@@ -9,7 +9,6 @@ import { Footer } from '../components/Footer';
 export const Home = () => {
     return (
         <>
-            <Header />
             <div className="home">
                 <div className='links-container'>
                     <a className='link-block' href="">

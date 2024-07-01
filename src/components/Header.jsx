@@ -22,7 +22,7 @@ export const Header = () => {
                 <NavLink to="/register" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                     <FontAwesomeIcon icon={faUserPlus} className="icon" /> Registrarse
                 </NavLink>
-                <NavLink to="/login" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                <NavLink to="/login/options" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                     <FontAwesomeIcon icon={faSignInAlt} className="icon" /> Iniciar Sesión
                 </NavLink>
             </nav>
