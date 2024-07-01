@@ -23,7 +23,7 @@ export const UserHeader = () => {
                 <NavLink to='/about-us' className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
                     <FontAwesomeIcon icon={faInfoCircle} className='icon' /> Sobre Nosotros
                 </NavLink>
-                <NavLink onClick={logout} className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
+                <NavLink to="/" onClick={logout} className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
                     <FontAwesomeIcon icon={faRightFromBracket} className='icon' /> Logout
                 </NavLink>
             </nav>

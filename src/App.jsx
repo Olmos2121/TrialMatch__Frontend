@@ -16,6 +16,7 @@ import { Layout } from './components/Layout.jsx';
 import { LayoutWithoutHeader } from './components/LayoutWithoutHeader.jsx';
 import { AuthContext } from './contexts/AuthContext.jsx';
 import { ClinicalTrials } from './views/ClinicalTrials.jsx';
+import { CreateTrial } from './views/CreateTrial.jsx';
 
 export const App = () => {
 
@@ -31,6 +32,7 @@ export const App = () => {
                         <Route path="privacy-policy" element={<PrivacyPolicy />} />
                         <Route path="*" element={<Home />} />
                         <Route path="clinical-trials" element={<ClinicalTrials />} />
+                        <Route path="/create-trial" element={<CreateTrial />} />
                     </Route>
                     <Route path="/" element={<LayoutWithoutHeader />}>
                         <Route path="register" element={<RegisterOptions />} />

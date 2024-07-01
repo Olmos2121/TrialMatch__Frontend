@@ -47,7 +47,7 @@ export const Login = () => {
         try {
             const { email, password } = formData;
             const data = await login(email, password);
-            localStorage.setItem('token', data);
+            localStorage.setItem('token', data.access_token);
             setLoginSuccess(true);
         } catch (error) {
             setError(true);
