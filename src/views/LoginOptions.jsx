@@ -5,16 +5,16 @@ import '../styles/RegisterOptions.css'
 import { Link, Navigate } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 
-export const RegisterOptions = () => {
+export const LoginOptions = () => {
 
     const navigate = useNavigate();
 
     const handlePatient = () => {
-        return navigate("/register/patient") 
+        return navigate("/login") 
     }
 
     const handleInvestigator = () => {
-        return navigate("/register/investigator")
+        return navigate("/login/investigator")
     }
 
     return (
@@ -28,12 +28,11 @@ export const RegisterOptions = () => {
                     <div className='registerOptions'>
                         <h1>Bienvenidos a <span style={{ color: '#2C9CED' }}>TrialMatch</span></h1>
                         <h2>Gracias por confiar en nosotros.</h2>
-                        <h2>Por favor elegi como deseas registrarte:</h2>
+                        <h2>Por favor elegi como deseas iniciar sesión:</h2>
                         <div className='loginBtn'>
                             <button onClick={handlePatient}>Paciente</button>
                             <button onClick={handleInvestigator}>Investigador</button>
                         </div>
-                        <p>¿Ya tienes una cuenta? <Link to="/login/options">Inicia sesión</Link></p>
                     </div>
                 </div>
                 <RegisterFooter />

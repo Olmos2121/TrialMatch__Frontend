@@ -3,10 +3,10 @@ import '../styles/Login.css';
 import img from '../assets/images/login_img.png'
 import { RegisterFooter } from '../components/RegisterFooter';
 import { Link } from 'react-router-dom';
-import { login } from '../apis/registerApi';
+import { loginInvestigator } from '../apis/registerApi';
 import { toast } from 'react-toastify';
 
-export const Login = () => {
+export const LoginInvestigator = () => {
     const [loginSuccess, setLoginSuccess] = useState(false);
     const [error, setError] = useState(false);
     const [formData, setFormData] = useState({
@@ -19,7 +19,7 @@ export const Login = () => {
             toast.success("Inicio de sesión exitoso", {
                 position: "top-center",
                 autoClose: 1000,
-                hideProgressBar: true,
+                hideProgressBar: false,
                 closeOnClick: false,
                 pauseOnHover: false,
                 draggable: true,
@@ -46,7 +46,7 @@ export const Login = () => {
         if (!formData.email || !formData.password) return;
         try {
             const { email, password } = formData;
-            const data = await login(email, password);
+            const data = await loginInvestigator(email, password);
             localStorage.setItem('token', data);
             setLoginSuccess(true);
         } catch (error) {
@@ -66,7 +66,7 @@ export const Login = () => {
                     <form onSubmit={handleSubmit} className='loginForm'>
                         <h1>Bienvenidos a <span style={{ color: '#2C9CED' }}>TrialMatch</span></h1>
                         <div className='logdataLabel_container'>
-                            <label>Email</label>
+                            <label>Email de la organización</label>
                             <input
                                 type="email"
                                 name="email"

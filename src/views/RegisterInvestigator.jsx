@@ -3,6 +3,7 @@ import { RegisterHeader } from '../components/RegisterHeader'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
+import { registerInvestigator } from '../apis/registerApi'
 
 export const RegisterInvestigator = () => {
     const navigate = useNavigate();
@@ -31,7 +32,7 @@ export const RegisterInvestigator = () => {
 
             });
             setTimeout(() => {
-                navigate("/login");
+                navigate("/login/investigator");
             }, 2000);
             setRegistrationSuccess(false);
         }
@@ -46,64 +47,19 @@ export const RegisterInvestigator = () => {
         }));
     }
 
-    const validateForm = () => {
-        const { firstName, lastName, email, password } = formData;
-        let formValid = true;
-        let pattern = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-
-        if (!firstName.trim()) {
-            setError(true);
-            formValid = false;
-        }
-
-        if (!lastName.trim()) {
-            setError(true);
-            formValid = false;
-        }
-
-        if (!email.trim()) {
-            setError(true);
-            formValid = false;
-        } else if (!pattern.test(email)) {
-            setError(false);
-            setErrorInvalidEmail(true);
-            formValid = false;
-        }
-
-        if (!password.trim()) {
-            setError(true);
-            formValid = false;
-        }
-
-        return formValid;
-    };
-
     const submitForm = async (e) => {
         e.preventDefault();
 
-        if (validateForm()) {
-            setError(false);
-            setErrorInvalidEmail(false);
+        try {
+            const { companyName, cuit, email, phone, address, password } = formData;
+            await registerInvestigator({ companyName, cuit, email, phone, address, password });
+            setRegistrationSuccess(true);
 
-            try {
-                const { companyName, cuit, email, phone, address, password } = formData;
-                const response = await registerInvestigator({
-                    companyName,
-                    cuit,
-                    email,
-                    phone,
-                    address,
-                    password
-                });
-                if (response) {
-                    setRegistrationSuccess(true);
-                } else {
-                    setErrorEmailUsed(true);
-                }
-            } catch (error) {
-                setErrorEmailUsed(true);
-            }
+        } catch (error) {
+            setErrorEmailUsed(true);
+            console.error(error);
         }
+
     }
 
 
