@@ -1,12 +1,79 @@
 .about-us {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     padding: 20px;
+    background-color: #ffffff; 
+    color: #444; 
+    line-height: 1.8; 
 }
 
-.about-us h1, .about-us h2 {
-    color: #4CAF50;
+.about-us h1 {
+    font-size: 3em;
+    margin-bottom: 30px; 
+    text-align: center;
+    color: #007bff; 
 }
 
-.about-us p {
-    font-size: 18px;
-    line-height: 1.6;
+.mission-vision {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 60px; 
+}
+
+.section {
+    flex: 1;
+    margin: 0 20px;
+    padding: 30px; 
+    background: #f8f9fa; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px; 
+}
+
+.section h2 {
+    color: #007bff; 
+    font-size: 2em; 
+    margin-bottom: 15px; 
+}
+
+.section p {
+    font-size: 1.1em; 
+    color: #555; 
+}
+
+.values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-auto-rows: auto; 
+    gap: 20px; 
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.value {
+    margin-bottom: 30px; 
+    padding: 30px; 
+    background: #f8f9fa; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 10px; 
+    width: 64vh;
+}
+
+.valuesTitle {
+    font-size: 2.5em; 
+    margin-bottom: 30px; 
+    text-align: center;
+    color: #007bff; 
+}
+
+
+.value h3 {
+    font-size: 1.8em; 
+    color: #007bff; 
+    margin-bottom: 15px; 
+}
+
+.value p {
+    font-size: 1.1em; 
+    color: #555; 
 }

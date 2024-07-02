@@ -1,0 +1,52 @@
+.postulacionExi-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 5vh;
+}
+
+.postulacionExi-container p {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 1em;
+
+}
+
+.postulacionExi-container h1 {
+    color: #4fa1d7;
+    margin-bottom: 20px;
+}
+
+.postulacionExi-details {
+    margin-top: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.postulacionExi-details p {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #333;
+}
+
+.postulacionExi-details p strong {
+    color: #0056b3;
+}
+
+.postulacionExi-container button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 2vh;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+} 
+
+.postulacionExi-container button:hover {
+    transform: scale(1.05);
+}

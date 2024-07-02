@@ -46,7 +46,6 @@ export const CreateTrial = () => {
 
     const submitForm = async (e) => {
         e.preventDefault();
-        
         try {
             await createTrial(formData);
             alert('Estudio creado correctamente');

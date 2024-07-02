@@ -4,6 +4,8 @@
     align-items: center;
     justify-content: center;
     background: #ffffff;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
 }
 
 .textImportantContainer {
@@ -14,11 +16,13 @@
     background: #91C2E3;
     height: 15vh;
     width: 70%;
-    margin-top: 2vh;
+    margin-bottom: 2vh;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .textImportantContainer h1 {
-    margin-bottom: 3vh;
+    margin-bottom: 1vh;
     font-size: 3vh;
     color: #fff;
 }
@@ -29,145 +33,129 @@
     margin: 0;
 }
 
-.search-container {
+.content-container {
     display: flex;
     flex-direction: row;
-    align-items: end;
     width: 70%;
-    height: 6vh;
-    margin-top: 1vh;
-    border-bottom: 1px solid #DCDCDC;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.filters-container {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    background: #f8f9fa;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.results-container {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.search-container {
+    margin-bottom: 20px;
 }
 
 .search-container h1 {
-    font-size: 3.2vh;
-    color: #000000;
-    margin-right: 3vh;
+    font-size: 3vh;
+    color: #000;
+    margin: 0;
 }
 
 .search-container h2 {
     font-size: 2vh;
-    color: #000000;
-    margin-right: 1vh;
-}
-
-.clinical-trials-container {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: 70%;
-    height: 40vh;
-    margin: auto;
-    justify-content: space-around;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 45%;
-}
-
-.estado {
-    margin: 10px 0;
-}
-
-.estado input[type="radio"] {
-    display: none;
-}
-
-.estado label:not(:first-child) {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 2vh;
-    user-select: none;
     color: #000;
+    margin: 5px 0 15px;
 }
 
-.estado label:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2px solid #ccc;
-    transition: background-color 0.2s, border-color 0.2s;
-}
-
-.estado input[type="radio"]:checked+label:before {
-    background-color: #91C2E3;
-    border-color: #91C2E3;
-}
-
-.estado label:hover:before {
-    border-color: #91C2E3;
-}
-
-.provincia {
-    margin: 10px 0;
-    font-family: Arial, sans-serif;
-}
-
-.provincia label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 16px;
-    color: #333;
-}
-
-.provincia select {
+.clinical-trials-results {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
-    padding: 8px 10px;
-    font-size: 16px;
-    border: 2px solid #00BFFF;
+}
+
+.clinical-trials-results h1 {
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.results-header {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: bold;
+    color: #495057;
+    text-align: center;
     border-radius: 5px;
+}
+
+.results-header span {
+    padding: 5px 10px;
+    background-color: #dee2e6;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.result {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    align-items: center;
     background-color: #fff;
-    color: #333;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-top: 10px;
 }
 
-.provincia select:focus {
-    outline: none;
-    border-color: #007BFF;
+.result p {
+    margin: 0;
+    padding: 5px 10px;
+    line-height: 1.5;
+    text-align: center;
+    width: auto;
 }
 
-.provincia select {
-    background-repeat: no-repeat;
-    background-position: right 10px top 50%;
-    background-size: 12px;
+.result p:first-child {
+    font-weight: bold;
+    color: #007bff;
 }
 
-.provincia select {
-    padding-right: 30px;
-}
-
+.provincia,
 .condicion-enfermedad {
-    margin: 10px 0;
-    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
 }
 
+.provincia label,
 .condicion-enfermedad label {
     display: block;
     margin-bottom: 5px;
-    font-size: 16px;
+    font-size: 1.7vh;
     color: #333;
 }
 
+input[type="radio"] {
+    margin-right: 0.5vh;
+}
+
+.provincia select,
 .condicion-enfermedad select {
     width: 100%;
     padding: 8px 10px;
-    font-size: 16px;
+    font-size: 1.7vh;
     border: 2px solid #00BFFF;
     border-radius: 5px;
     background-color: #fff;
@@ -177,31 +165,29 @@
     -moz-appearance: none;
 }
 
+.provincia select:focus,
 .condicion-enfermedad select:focus {
     outline: none;
     border-color: #007BFF;
 }
 
+.provincia select,
 .condicion-enfermedad select {
     background-repeat: no-repeat;
     background-position: right 10px top 50%;
     background-size: 12px;
-}
-
-.condicion-enfermedad select {
     padding-right: 30px;
 }
 
 .buscar {
-    margin: 10px 0;
     text-align: center;
 }
 
 .buscar button {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 1.7vh;
     color: #fff;
-    background-color: #91C2E3  1;
+    background-color: #91C2E3;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -214,31 +200,4 @@
 
 .buscar button:active {
     transform: scale(0.98);
-}
-
-.clinical-trials-container input[type="text"],
-
-.clinical-trials-container select {
-    width: 90%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.estado label {
-    display: inline-block;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #91C2E3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #91C2E3;
 }

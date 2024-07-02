@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/Login.css';
 import img from '../assets/images/login_img.png'
 import { RegisterFooter } from '../components/RegisterFooter';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../apis/registerApi';
 import { toast } from 'react-toastify';
 
@@ -13,6 +13,14 @@ export const Login = () => {
         email: '',
         password: ''
     });
+    const decodeJWT = (token) => {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map((c) => {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(jsonPayload);
+    };
 
     useEffect(() => {
         if (loginSuccess) {
@@ -48,6 +56,11 @@ export const Login = () => {
             const { email, password } = formData;
             const data = await login(email, password);
             localStorage.setItem('token', data.access_token);
+
+            const decodedToken = decodeJWT(data.access_token);
+            const role = decodedToken.role;
+            localStorage.setItem('role', role);
+
             setLoginSuccess(true);
         } catch (error) {
             setError(true);

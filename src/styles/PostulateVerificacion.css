@@ -1,0 +1,80 @@
+/* PostulateVerificacion.css */
+.veri-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    padding: 20px;
+}
+
+.veri-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.veri-container h2 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.8em;
+}
+
+.veri-container p {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 1em;
+}
+
+.veri-button-group {
+    display: flex;
+    gap: 15px;
+}
+
+.veri-button {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.veri-button.cancel {
+    background-color: #f44336;
+    color: white;
+}
+
+.veri-button.cancel:hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+}
+
+.veri-button.submit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.veri-button.submit:hover {
+    background-color: #388E3C;
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
