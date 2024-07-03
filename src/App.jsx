@@ -16,27 +16,37 @@ import { Layout } from './components/Layout.jsx';
 import { LayoutWithoutHeader } from './components/LayoutWithoutHeader.jsx';
 import { AuthContext } from './contexts/AuthContext.jsx';
 import { ClinicalTrials } from './views/ClinicalTrials.jsx';
-import { CreateTrial } from './views/CreateTrial.jsx';
 import { StudyDetails } from './views/StudyDetails.jsx';
 import { PrivateRoute } from './auth/PrivateRoute.jsx';
 import { PostulateVerificacion } from './views/PostulateVerificacion.jsx';
 import { PostulacionExitosa } from './views/PostulacionExitosa.jsx'
+import { InvestigatorView } from './views/investigator/InvestigatorView.jsx';
 
 export const App = () => {
 
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated, role } = useContext(AuthContext);
+
+    const renderHomeBasedOnRole = () => {
+        switch (role) {
+            case 'PATIENT':
+                return <UserHome />;
+            case 'INVESTIGATOR':
+                return <InvestigatorView />;
+            default:
+                return <Home />;
+        }
+    };
 
     return (
         <Router>
             <main>
                 <Routes>
                     <Route path="/" element={<Layout />}>
-                        <Route index element={isAuthenticated ? <UserHome /> : <Home />} />
+                        <Route index element={renderHomeBasedOnRole()} />
                         <Route path="about-us" element={<AboutUs />} />
                         <Route path="privacy-policy" element={<PrivacyPolicy />} />
                         <Route path="*" element={<Home />} />
                         <Route path="clinical-trials" element={<PrivateRoute element={<ClinicalTrials />} roles={['PATIENT']} />} />
-                        <Route path="/create-trial" element={<PrivateRoute element={<CreateTrial />} roles={['INVESTIGATOR']} />} />
                         <Route path="/study-details/:id" element={<PrivateRoute element={<StudyDetails />} roles={['PATIENT']} />} />
                         <Route path='/postulacion-exitosa/:id' element={<PrivateRoute element={<PostulacionExitosa />} roles={['PATIENT']} />} />
                     </Route>

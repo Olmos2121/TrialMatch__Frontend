@@ -1,0 +1,113 @@
+.trials-container {
+    padding: 2vh;
+    background-color: #f9fafc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 2vh;
+}
+
+.loading,
+.no-trials {
+    text-align: center;
+    font-size: 1.8vh;
+    color: #7f8c8d;
+}
+
+.trials-title {
+    font-size: 2.4vh;
+    margin-bottom: 2vh;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.grid {
+    display: grid;
+    gap: 2.1vh;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.trial-card {
+    background-color: #ecf0f1;
+    padding: 2.2vh;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trial-card:hover {
+    transform: scale(1.05);
+}
+
+.trial-info {
+    flex: 1;
+}
+
+.trial-name {
+    font-size: 2.2vh;
+    font-weight: bold;
+    color: #2980b9;
+    margin-bottom: 1vh;
+}
+
+.trial-detail {
+    font-size: 1.8vh;
+    color: #7f8c8d;
+    margin-bottom: 0.5vh;
+}
+
+.trial-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.trial-button {
+    padding: 1vh 1.vh;
+    margin: 0.6vh 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    transition: background-color 0.3s;
+    width: 16.1vh;
+    text-align: center;
+}
+
+.trial-button.delete {
+    background-color: #e74c3c;
+}
+
+.trial-button.delete:hover {
+    background-color: #c0392b;
+}
+
+.trial-button.edit {
+    background-color: #f39c12;
+}
+
+.trial-button.edit:hover {
+    background-color: #e67e22;
+}
+
+.trial-button.view {
+    background-color: #3498db;
+}
+
+.trial-button.view:hover {
+    background-color: #2980b9;
+}

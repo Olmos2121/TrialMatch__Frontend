@@ -76,3 +76,128 @@ export const applyToTrial = async (trialId) => {
 
     return response.json();
 }
+
+export const getTrialsByEmail = async () => {
+    const token = localStorage.getItem('token');
+    const user = decodeJWT(token);
+
+    const response = await fetch(`${API_BASE_URL}/trials/all/${user.sub}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al obtener los estudios')
+    }
+
+    return response.json();
+}
+
+export const deleteTrial = async (id) => {
+    const response = await fetch(`${API_BASE_URL}/trials/delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al eliminar el estudio')
+    }
+
+    return response.json();
+}
+
+export const editTrial = async (id, formData) => {
+    const response = await fetch(`${API_BASE_URL}/trials/edit/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify(formData)
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al editar el estudio')
+    }
+
+    return response.json();
+}
+
+export const getTrialCandidates = async (id) => {
+    const response = await fetch(`${API_BASE_URL}/trials/candidatos/${id}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al obtener los candidatos')
+    }
+
+    return response.json();
+}
+
+export const acceptApply = async (trialId, userId) => {
+    const response = await fetch(`${API_BASE_URL}/trials/acceptApply/${trialId}/${userId}`, {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al aceptar la aplicación')
+    }
+
+    return response.json();
+}
+
+export const rejectApply = async (trialId, userId) => {
+    const response = await fetch(`${API_BASE_URL}/trials/rejectApply/${trialId}/${userId}`, {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al rechazar la aplicación')
+    }
+
+    return response.json();
+}
+
+export const removeParticipant = async (trialId, userId) => {
+    const response = await fetch(`${API_BASE_URL}/trials/removeParticipant/${trialId}/${userId}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al eliminar el participante')
+    }
+
+    return response.json();
+}
+
+export const getTrialParticipants = async (id) => {
+    const response = await fetch(`${API_BASE_URL}/trials/participantes/${id}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al obtener los participantes')
+    }
+
+    return response.json();
+}
