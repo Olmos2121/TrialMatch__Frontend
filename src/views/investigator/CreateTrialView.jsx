@@ -6,6 +6,7 @@ import { estados } from '../../assets/enums/Estados';
 import { generos } from '../../assets/enums/Generos';
 import { enfermedades } from '../../assets/enums/Enfermedades';
 import '../../styles/CreateTrialView.css';
+import { height } from '@fortawesome/free-brands-svg-icons/fa42Group';
 
 export const CreateTrialView = () => {
     const [ageRange, setAgeRange] = useState({ min: '', max: '' });
@@ -14,6 +15,7 @@ export const CreateTrialView = () => {
         enfermedad: '',
         fase: '',
         status: '',
+        descripcion: '',
         startDate: '',
         endDate: '',
         provincia: '',
@@ -150,8 +152,8 @@ export const CreateTrialView = () => {
                     className="create-trial-select"
                 >
                     <option value="">Selecciona una opción</option>
-                    <option value="true">Sí</option>
-                    <option value="false">No</option>
+                    <option value="Sí">Sí</option>
+                    <option value="No">No</option>
                 </select>
                 <div className="age-range-container">
                     <label>Rango Etario:</label>
@@ -170,6 +172,16 @@ export const CreateTrialView = () => {
                         value={ageRange.max}
                         onChange={handleRangeChange}
                         className="create-trial-input age-range-input"
+                    />
+                </div>
+                <div className="description-container">
+                    <label>Descripción</label>
+                    <textarea
+                        name="descripcion"
+                        value={formData.descripcion}
+                        onChange={handleInputChange}
+                        className="create-trial-textarea"
+                        style={{ height: '16vh'}}
                     />
                 </div>
                 <button type="submit" className="create-trial-button">

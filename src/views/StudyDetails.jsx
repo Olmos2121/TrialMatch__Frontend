@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getTrialById } from '../apis/trialApi';
 import { Footer } from '../components/Footer';
+import { MoreInfoModal } from './modals/MoreInfoModal';
 import '../styles/StudyDetails.css';
 
 export const StudyDetails = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [trial, setTrial] = useState({});
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,6 +23,12 @@ export const StudyDetails = () => {
 
         fetchData();
     }, [id]);
+
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    };
+
+    console.log(trial);
 
 
     return (
@@ -48,7 +56,7 @@ export const StudyDetails = () => {
                         </tbody>
                     </table>
                 </section>
-
+                <button className="more-info-button" onClick={toggleModal}>Más información</button>
                 <section className="design-eligibility">
                     <div className="design">
                         <h2>Diseño del estudio</h2>
@@ -58,7 +66,7 @@ export const StudyDetails = () => {
                     </div>
                     <div className="eligibility">
                         <h2>Elegibilidad</h2>
-                        <p><strong>Edad:</strong> {trial.rangoEtarioMin} - {trial.rangoEtaioMax}</p>
+                        <p><strong>Edad:</strong> {trial.rangoEtarioMin} - {trial.rangoEtarioMax}</p>
                         <p><strong>Género:</strong> {trial.genero}</p>
                         <p><strong>Candidatos sanos requeridos:</strong> {trial.candidatosSanos}</p>
                     </div>
@@ -69,6 +77,11 @@ export const StudyDetails = () => {
                 )}
             </div>
             <Footer />
+            <MoreInfoModal 
+                isOpen={isModalOpen} 
+                toggleModal={toggleModal} 
+                trial={trial}
+            />
         </>
     );
 };

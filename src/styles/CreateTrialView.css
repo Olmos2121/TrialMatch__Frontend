@@ -64,3 +64,19 @@
     background-color: #0056b3;
     transform: translateY(-2px);
 }
+
+.description-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.create-trial-textarea {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    background-color: #fafafa;
+    transition: border-color 0.3s;
+    resize: none;
+}
