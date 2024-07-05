@@ -110,8 +110,8 @@ export const deleteTrial = async (id) => {
     return response.json();
 }
 
-export const editTrial = async (id, formData) => {
-    const response = await fetch(`${API_BASE_URL}/trials/edit/${id}`, {
+export const editTrial = async (formData) => {
+    const response = await fetch(`${API_BASE_URL}/trials/editTrial`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',

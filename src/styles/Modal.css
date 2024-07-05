@@ -110,3 +110,10 @@ textarea {
     margin: 1vh;
     width: 48%;
 }
+
+.edit-trial-select-editable {
+    border: 2px solid #2196F3; 
+    background-color: #f9f9f9; 
+    padding: 8px; 
+    border-radius: 4px;
+}

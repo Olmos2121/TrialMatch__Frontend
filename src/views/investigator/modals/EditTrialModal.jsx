@@ -4,23 +4,30 @@ import { provincias } from '../../../assets/enums/Provincias';
 import { fases } from '../../../assets/enums/Fases';
 import { estados } from '../../../assets/enums/Estados';
 import { generos } from '../../../assets/enums/Generos';
+import { candidatosSanos } from '../../../assets/enums/CandidatosSanos';
 import { enfermedades } from '../../../assets/enums/Enfermedades';
 
 export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
     const [ageRange, setAgeRange] = useState({ min: trial.rangoEtarioMin, max: trial.rangoEtarioMax });
+    const [formDataEdit, setFormDataEdit] = useState({
+        id: 0,
+        fase: "",
+        status: "",
+    });
     const [formData, setFormData] = useState({
+        id: trial.id,
         name: trial.nombre,
         enfermedad: trial.enfermedad,
         fase: trial.fase,
-        status: trial.estado,
-        descripcion: trial.descripcion,
         startDate: trial.fechaInicio,
         endDate: trial.fechaFin,
+        status: trial.estado,
         provincia: trial.provincia,
         genero: trial.genero,
         candidatosSanos: trial.candidatosSanos,
         rangoEtarioMin: trial.rangoEtarioMin,
-        rangoEtarioMax: trial.rangoEtarioMax
+        rangoEtarioMax: trial.rangoEtarioMax,
+        descripcion: trial.descripcion
     });
 
     const handleRangeChange = (event) => {
@@ -45,13 +52,10 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
 
     const submitForm = async (e) => {
         e.preventDefault();
-        try {
-            await onSave(formData);
-            alert('Estudio actualizado correctamente');
-            onClose();
-        } catch (error) {
-            alert('Error al actualizar el estudio');
-        }
+        formDataEdit.id = trial.id;
+        formDataEdit.fase = formData.fase;
+        formDataEdit.status = formData.status;
+        onSave(formDataEdit);
     }
 
     return (
@@ -69,6 +73,7 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
                                 placeholder="Nombre del ensayo"
                                 value={formData.name}
                                 onChange={handleInputChange}
+                                readOnly
                                 className="edit-trial-input"
                             />
                             <label>Enfermedad</label>
@@ -76,6 +81,7 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
                                 name="enfermedad"
                                 value={formData.enfermedad}
                                 onChange={handleInputChange}
+                                disabled
                                 className="edit-trial-select"
                             >
                                 <option value="">Selecciona una enfermedad</option>
@@ -88,7 +94,7 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
                                 name="fase"
                                 value={formData.fase}
                                 onChange={handleInputChange}
-                                className="edit-trial-select"
+                                className="edit-trial-select-editable"
                             >
                                 <option value="">Selecciona una fase</option>
                                 {fases.map((fase, index) => (
@@ -100,6 +106,7 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
                                 type="date"
                                 name="startDate"
                                 value={formData.startDate}
+                                readOnly
                                 onChange={handleInputChange}
                                 className="edit-trial-input"
                             />
@@ -108,6 +115,7 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
                                 type="date"
                                 name="endDate"
                                 value={formData.endDate}
+                                readOnly
                                 onChange={handleInputChange}
                                 className="edit-trial-input"
                             />
@@ -118,7 +126,7 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
                                 name="status"
                                 value={formData.status}
                                 onChange={handleInputChange}
-                                className="edit-trial-select"
+                                className="edit-trial-select-editable"
                             >
                                 <option value="">Selecciona un estado</option>
                                 {estados.map((estado, index) => (
@@ -130,6 +138,7 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
                                 name="provincia"
                                 value={formData.provincia}
                                 onChange={handleInputChange}
+                                disabled
                                 className="edit-trial-select"
                             >
                                 <option value="">Selecciona una provincia</option>
@@ -142,9 +151,9 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
                                 name="genero"
                                 value={formData.genero}
                                 onChange={handleInputChange}
+                                disabled
                                 className="edit-trial-select"
                             >
-                                <option value="">Selecciona un género</option>
                                 {generos.map((genero, index) => (
                                     <option key={index} value={genero}>{genero}</option>
                                 ))}
@@ -154,11 +163,12 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
                                 name="candidatosSanos"
                                 value={formData.candidatosSanos}
                                 onChange={handleInputChange}
+                                disabled
                                 className="edit-trial-select"
                             >
-                                <option value="">Selecciona una opción</option>
-                                <option value="true">Sí</option>
-                                <option value="false">No</option>
+                                {candidatosSanos.map((candidato, index) => (
+                                    <option key={index} value={candidato}>{candidato}</option>
+                                ))}
                             </select>
                             <div className="age-range-container">
                                 <label>Rango Etario</label>
@@ -168,6 +178,7 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
                                         name="min"
                                         value={ageRange.min}
                                         onChange={handleRangeChange}
+                                        readOnly
                                         className="edit-trial-input"
                                     />
                                     <input
@@ -175,6 +186,7 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
                                         name="max"
                                         value={ageRange.max}
                                         onChange={handleRangeChange}
+                                        readOnly
                                         className="edit-trial-input"
                                     />
                                 </div>
@@ -185,6 +197,7 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
                     <textarea
                         name="descripcion"
                         value={formData.descripcion}
+                        readOnly
                         onChange={handleInputChange}
                         className="edit-trial-textarea"
                     />

@@ -4,6 +4,7 @@ import { DeleteTrialModal } from './modals/DeleteTrialModal';
 import { EditTrialModal } from './modals/EditTrialModal';
 import { ViewCandidatesModal } from './modals/ViewCandidatesModal';
 import { ViewParticipantsModal } from './modals/ViewParticipantsModal';
+import { toast } from 'react-toastify';
 import '../../styles/ViewTrials.css';
 
 export const ViewTrials = () => {
@@ -21,7 +22,8 @@ export const ViewTrials = () => {
         const fetchTrials = async () => {
             try {
                 const trials = await getTrialsByEmail();
-                setTrials(trials);
+                const sortedTrials = trials.sort((a, b) => new Date(a.fechaInicio) - new Date(b.fechaInicio));
+                setTrials(sortedTrials);
             } catch (error) {
                 console.error(error);
             } finally {
@@ -60,9 +62,9 @@ export const ViewTrials = () => {
             return;
         }
         try {
-            const response = await editTrial(updatedTrial.id, updatedTrial);
+            await editTrial(updatedTrial);
 
-            const updatedTrialObj = Array.from(response.entries()).reduce((obj, [key, value]) => {
+            const updatedTrialObj = Object.entries(updatedTrial).reduce((obj, [key, value]) => {
                 obj[key] = value;
                 return obj;
             }, {});
@@ -72,8 +74,19 @@ export const ViewTrials = () => {
                     trial.id === updatedTrialObj.id ? updatedTrialObj : trial
                 )
             );
-
+            const data = await getTrialsByEmail();
+            const sortedTrials = data.sort((a, b) => new Date(a.fechaInicio) - new Date(b.fechaInicio));
+            setTrials(sortedTrials);
             setIsEditModalOpen(false);
+            toast.success("El ensayo se ha editado correctamente", {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
             setTrialToEdit(null);
         } catch (error) {
             console.error(error);
