@@ -1,5 +1,5 @@
 export const generos = [
-    'todos',
     'Masculino',
     'Femenino',
+    'Sin especificar'
 ];

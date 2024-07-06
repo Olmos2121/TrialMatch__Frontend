@@ -45,7 +45,11 @@ export const getTrials = async () => {
 }
 
 export const getTrialById = async (id) => {
-    const response = await fetch(`${API_BASE_URL}/trials/${id}`, {
+
+    const token = localStorage.getItem('token');
+    const data = decodeJWT(token);
+
+    const response = await fetch(`${API_BASE_URL}/trials/${id}/${data.sub}`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`

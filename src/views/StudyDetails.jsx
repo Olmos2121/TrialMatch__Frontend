@@ -10,12 +10,14 @@ export const StudyDetails = () => {
     const { id } = useParams();
     const [trial, setTrial] = useState({});
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isPostulating, setIsPostulating] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const result = await getTrialById(id);
-                setTrial(result);
+                setTrial(result.clinicalTrial);
+                setIsPostulating(result.postulated);
             } catch (error) {
                 console.log(error);
             }
@@ -28,8 +30,9 @@ export const StudyDetails = () => {
         setIsModalOpen(!isModalOpen);
     };
 
-    console.log(trial);
-
+    const handleDisable = () => {
+        return;
+    }
 
     return (
         <>
@@ -73,13 +76,18 @@ export const StudyDetails = () => {
                 </section>
 
                 {trial.estado === "reclutando" && (
-                    <button className="register-button" onClick={() => navigate(`/postulate/verificacion/${trial.id}`)}>Postulate</button>
+                    <button
+                        className={isPostulating ? "register-button postulated" : "register-button"}
+                        onClick={() => isPostulating ? handleDisable : navigate(`/postulate/verificacion/${trial.id}`)}
+                    >
+                        {isPostulating ? "Usuario ya postulado" : "Postúlate"}
+                    </button>
                 )}
             </div>
             <Footer />
-            <MoreInfoModal 
-                isOpen={isModalOpen} 
-                toggleModal={toggleModal} 
+            <MoreInfoModal
+                isOpen={isModalOpen}
+                toggleModal={toggleModal}
                 trial={trial}
             />
         </>

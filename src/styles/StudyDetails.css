@@ -53,6 +53,14 @@
     margin-bottom: 10px;
 }
 
+.register-button.postulated {
+    background-color: #bdc3c7;
+}
+
+.register-button.postulated:hover {
+    background-color: #7f8c8d;
+}
+
 .register-button {
     display: block;
     width: 100%;

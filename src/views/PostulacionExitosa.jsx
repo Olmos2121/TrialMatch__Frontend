@@ -14,7 +14,7 @@ export const PostulacionExitosa = () => {
         const fetchData = async () => {
             try {
                 const trial = await getTrialById(id);
-                setResult(trial);
+                setResult(trial.clinicalTrial);
 
                 await applyToTrial(id);
 
