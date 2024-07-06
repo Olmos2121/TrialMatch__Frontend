@@ -201,3 +201,33 @@ export const getTrialParticipants = async (id) => {
 
     return response.json();
 }
+
+export const sendMessageToParticipant = async (trialId, userId, message) => {
+    const response = await fetch(`${API_BASE_URL}/message/sendMessage/${trialId}/${userId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({ message })
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al enviar el mensaje')
+    }
+}
+
+export const sendMessageToAllParticipants = async (trialId, message) => {
+    const response = await fetch(`${API_BASE_URL}/message/sendMessageToAll/${trialId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({ message })
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al enviar el mensaje')
+    }
+}

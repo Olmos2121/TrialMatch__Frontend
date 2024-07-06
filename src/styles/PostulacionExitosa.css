@@ -10,7 +10,7 @@
 }
 
 .postulacionExi-container p {
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
     color: #666;
     font-size: 1em;
 
@@ -18,18 +18,18 @@
 
 .postulacionExi-container h1 {
     color: #4fa1d7;
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 }
 
 .postulacionExi-details {
-    margin-top: 20px;
+    margin-top: 2vh;
     text-align: center;
     border-bottom: 1px solid #ccc;
 }
 
 .postulacionExi-details p {
-    font-size: 1.2em;
-    margin: 10px 0;
+    font-size: 2.1vh;
+    margin: 1vh 0;
     color: #333;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .postulacionExi-container button {
-    padding: 10px 25px;
+    padding: 1vh 2.5vh;
     border: none;
     border-radius: 5px;
     margin-top: 2vh;

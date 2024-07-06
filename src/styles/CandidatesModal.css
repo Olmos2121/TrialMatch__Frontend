@@ -16,7 +16,7 @@
 .modal-content {
     background-color: #fff;
     margin: auto;
-    padding: 20px;
+    padding: 2vh;
     border: 1px solid #888;
     width: 80%;
     max-width: 600px;
@@ -28,7 +28,7 @@
 .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 2.8vh;
     font-weight: bold;
 }
 
@@ -42,7 +42,7 @@
 .two-column-container {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 20px;
+    margin-top: 2vh;
 }
 
 .column {
@@ -51,24 +51,32 @@
     box-sizing: border-box;
 }
 
-.column div {
+.modal-column-button {
     background-color: #f9f9f9;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.modal-content button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    margin-top: 20px;
+    color: #000000;
+    padding: 1vh 2vh;
+    margin-top: 2vh;
     border: none;
     border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
-.modal-content button:hover {
+.modal-column-button:hover {
+    background-color: #f0f0f0;
+}
+
+.close-modal-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1vh 2vh;
+    margin-top: 2vh;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.close-modal-button:hover {
     background-color: #45a049;
 }

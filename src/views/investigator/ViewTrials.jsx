@@ -15,8 +15,10 @@ export const ViewTrials = () => {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [trialToEdit, setTrialToEdit] = useState(null);
     const [selectedTrial, setSelectedTrial] = useState(null);
-    const [modalType, setModalType] = useState(null);
+    const [isCandidatesModalOpen, setIsCandidatesModalOpen] = useState(false);
+    const [isParticipantsModalOpen, setIsParticipantsModalOpen] = useState(false);
     const [error, setError] = useState(null);
+    const [editSuccess, setEditSuccess] = useState(false);
 
     useEffect(() => {
         const fetchTrials = async () => {
@@ -30,13 +32,36 @@ export const ViewTrials = () => {
                 setLoading(false);
             }
         };
-
         fetchTrials();
     }, []);
+
+    useEffect(() => {
+        if (editSuccess) {
+            toast.success("El ensayo se ha editado correctamente", {
+                position: "top-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+    }, [editSuccess]);
 
     const handleDeleteClick = (trial) => {
         setIsDeleteModalOpen(true);
         setTrialToDelete(trial);
+    };
+
+    const handleCandidatesClick = (trial) => {
+        setSelectedTrial(trial);
+        setIsCandidatesModalOpen(true);
+    };
+
+    const handleParticipantsClick = (trial) => {
+        setSelectedTrial(trial);
+        setIsParticipantsModalOpen(true);
     };
 
     const handleConfirmDelete = async () => {
@@ -78,15 +103,6 @@ export const ViewTrials = () => {
             const sortedTrials = data.sort((a, b) => new Date(a.fechaInicio) - new Date(b.fechaInicio));
             setTrials(sortedTrials);
             setIsEditModalOpen(false);
-            toast.success("El ensayo se ha editado correctamente", {
-                position: "top-center",
-                autoClose: 1000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: false,
-                draggable: true,
-                progress: undefined,
-            });
             setTrialToEdit(null);
         } catch (error) {
             console.error(error);
@@ -94,18 +110,14 @@ export const ViewTrials = () => {
         }
     };
 
-    const openModal = (trial, type) => {
-        setSelectedTrial(trial);
-        setModalType(type);
-    };
-
     const handleCloseModal = () => {
         setIsDeleteModalOpen(false);
         setTrialToDelete(null);
         setIsEditModalOpen(false);
         setTrialToEdit(null);
-        setModalType(null);
         setSelectedTrial(null);
+        setIsCandidatesModalOpen(false);
+        setIsParticipantsModalOpen(false);
     };
 
     return (
@@ -128,8 +140,8 @@ export const ViewTrials = () => {
                             <div className="trial-buttons">
                                 <button className="trial-button delete" onClick={() => handleDeleteClick(trial)}>Eliminar</button>
                                 <button className="trial-button edit" onClick={() => handleEditClick(trial)}>Editar</button>
-                                <button className="trial-button view" onClick={() => openModal(trial, 'viewCandidates')}>Ver Candidatos</button>
-                                <button className="trial-button view" onClick={() => openModal(trial, 'viewParticipants')}>Ver Participantes</button>
+                                <button className="trial-button view" onClick={() => handleCandidatesClick(trial)}>Ver Candidatos</button>
+                                <button className="trial-button view" onClick={() => handleParticipantsClick(trial)} >Ver Participantes</button>
                             </div>
                         </div>
                     ))}
@@ -150,13 +162,22 @@ export const ViewTrials = () => {
                     onClose={handleCloseModal}
                     onSave={handleSaveEdit}
                     trial={trialToEdit}
+                    setEditSuccess={setEditSuccess}
                 />
             )}
-            {modalType === 'viewCandidates' && selectedTrial && (
-                <ViewCandidatesModal trial={selectedTrial} onClose={handleCloseModal} />
+            {isCandidatesModalOpen && (
+                <ViewCandidatesModal
+                    isOpen={isCandidatesModalOpen}
+                    trial={selectedTrial}
+                    onClose={handleCloseModal}
+                />
             )}
-            {modalType === 'viewParticipants' && selectedTrial && (
-                <ViewParticipantsModal trial={selectedTrial} onClose={handleCloseModal} />
+            {isParticipantsModalOpen && (
+                <ViewParticipantsModal
+                    isOpen={isParticipantsModalOpen}
+                    trial={selectedTrial}
+                    onClose={handleCloseModal}
+                />
             )}
         </div>
     );

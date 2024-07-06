@@ -42,7 +42,7 @@ export const PostulacionExitosa = () => {
                     <p><strong>Enfermedad:</strong> {result.enfermedad}</p>
                     <p><strong>Provincia:</strong> {result.provincia}</p>
                     <p><strong>Nombre del Estudio:</strong> {result.nombre}</p>
-                    <p><strong>Rango Etario Máximo:</strong> {result.rangoEtaioMax}</p>
+                    <p><strong>Rango Etario Máximo:</strong> {result.rangoEtarioMax}</p>
                     <p><strong>Rango Etario Mínimo:</strong> {result.rangoEtarioMin}</p>
                     <p><strong>Candidatos Sanos:</strong> {result.candidatosSanos}</p>
                 </div>

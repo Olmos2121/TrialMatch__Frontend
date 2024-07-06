@@ -7,7 +7,7 @@ import { generos } from '../../../assets/enums/Generos';
 import { candidatosSanos } from '../../../assets/enums/CandidatosSanos';
 import { enfermedades } from '../../../assets/enums/Enfermedades';
 
-export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
+export const EditTrialModal = ({ isOpen, onClose, onSave, trial, setEditSuccess }) => {
     const [ageRange, setAgeRange] = useState({ min: trial.rangoEtarioMin, max: trial.rangoEtarioMax });
     const [formDataEdit, setFormDataEdit] = useState({
         id: 0,
@@ -28,6 +28,11 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
         rangoEtarioMin: trial.rangoEtarioMin,
         rangoEtarioMax: trial.rangoEtarioMax,
         descripcion: trial.descripcion
+    });
+    const [prevData, setPrevData] = useState({
+        id: trial.id,
+        fase: trial.fase,
+        status: trial.estado
     });
 
     const handleRangeChange = (event) => {
@@ -52,10 +57,19 @@ export const EditTrialModal = ({ isOpen, onClose, onSave, trial }) => {
 
     const submitForm = async (e) => {
         e.preventDefault();
-        formDataEdit.id = trial.id;
+
+        formDataEdit.id = formData.id;
         formDataEdit.fase = formData.fase;
         formDataEdit.status = formData.status;
-        onSave(formDataEdit);
+
+        if (formDataEdit.fase === prevData.fase && formDataEdit.status === prevData.status) {
+            setEditSuccess(false);
+            onClose();
+            return;
+        } else {
+            setEditSuccess(true);
+            onSave(formDataEdit);
+        }
     }
 
     return (
