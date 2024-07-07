@@ -235,3 +235,24 @@ export const sendMessageToAllParticipants = async (trialId, message) => {
         throw new Error('Error al enviar el mensaje')
     }
 }
+
+export const saveUserInfo = async (formData, trialId) => {
+
+    const token = localStorage.getItem('token');
+    const user = decodeJWT(token);
+
+    const response = await fetch(`${API_BASE_URL}/application/saveUserInfo/${trialId}/${user.sub}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify(formData)
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al guardar la información')
+    }
+
+    return response.json();
+}

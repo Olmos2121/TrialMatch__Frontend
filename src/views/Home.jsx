@@ -2,7 +2,6 @@ import React from 'react';
 import userExp from '../assets/images/user_experience.png';
 import trialImg from '../assets/images/trial_img.png'
 import '../styles/Home.css';
-import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 
 

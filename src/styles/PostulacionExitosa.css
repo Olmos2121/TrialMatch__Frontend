@@ -1,9 +1,9 @@
 .postulacionExi-container {
-    max-width: 800px;
+    max-width: 86.29vh;
     margin: 0 auto;
-    padding: 20px;
+    padding: 2.15vh;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 1.07vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin-top: 5vh;
@@ -12,8 +12,7 @@
 .postulacionExi-container p {
     margin-bottom: 2vh;
     color: #666;
-    font-size: 1em;
-
+    font-size: 1.7vh;
 }
 
 .postulacionExi-container h1 {

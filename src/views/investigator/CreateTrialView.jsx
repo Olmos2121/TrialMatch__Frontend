@@ -6,7 +6,6 @@ import { estados } from '../../assets/enums/Estados';
 import { generos } from '../../assets/enums/Generos';
 import { enfermedades } from '../../assets/enums/Enfermedades';
 import '../../styles/CreateTrialView.css';
-import { height } from '@fortawesome/free-brands-svg-icons/fa42Group';
 
 export const CreateTrialView = () => {
     const [ageRange, setAgeRange] = useState({ min: '', max: '' });

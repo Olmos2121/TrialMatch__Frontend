@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     background: #ffffff;
-    padding: 20px;
+    padding: 2.15vh;
     font-family: 'Arial', sans-serif;
 }
 
@@ -38,7 +38,7 @@
     flex-direction: row;
     width: 70%;
     justify-content: space-between;
-    gap: 20px;
+    gap: 2.15vh;
 }
 
 .filters-container {
@@ -46,9 +46,9 @@
     flex-direction: column;
     width: 25%;
     background: #f8f9fa;
-    padding: 20px;
+    padding: 2.15vh;
     border: 1px solid #dee2e6;
-    border-radius: 10px;
+    border-radius: 1.07vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -59,7 +59,7 @@
 }
 
 .search-container {
-    margin-bottom: 20px;
+    margin-bottom: 2.15vh;
 }
 
 .search-container h1 {
@@ -71,12 +71,12 @@
 .search-container h2 {
     font-size: 2vh;
     color: #000;
-    margin: 5px 0 15px;
+    margin: 0.53vh 0 1.61vh;
 }
 
 .clinical-trials-results {
     background-color: #f5f5f5;
-    padding: 20px;
+    padding: 2.15vh;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
@@ -85,14 +85,14 @@
 .clinical-trials-results h1 {
     color: #0056b3;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 2.15vh;
 }
 
 .results-header {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    padding: 10px;
+    gap: 1.07vh;
+    padding: 1.07vh;
     background-color: #e9ecef;
     border-bottom: 2px solid #dee2e6;
     font-weight: bold;
@@ -102,7 +102,7 @@
 }
 
 .results-header span {
-    padding: 5px 10px;
+    padding: 0.53vh 1.07vh;
     background-color: #dee2e6;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -111,19 +111,19 @@
 .result {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
+    gap: 1.07vh;
     align-items: center;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    margin-top: 10px;
+    padding: 1.61vh;
+    margin-top: 1.07vh;
 }
 
 .result p {
     margin: 0;
-    padding: 5px 10px;
+    padding: 0.53vh 1.07vh;
     line-height: 1.5;
     text-align: center;
     width: auto;
@@ -136,13 +136,13 @@
 
 .provincia,
 .condicion-enfermedad {
-    margin-bottom: 20px;
+    margin-bottom: 2.15vh;
 }
 
 .provincia label,
 .condicion-enfermedad label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.53vh;
     font-size: 1.7vh;
     color: #333;
 }
@@ -154,7 +154,7 @@ input[type="radio"] {
 .provincia select,
 .condicion-enfermedad select {
     width: 100%;
-    padding: 8px 10px;
+    padding: 0.86vh 1.07vh;
     font-size: 1.7vh;
     border: 2px solid #00BFFF;
     border-radius: 5px;
@@ -174,9 +174,9 @@ input[type="radio"] {
 .provincia select,
 .condicion-enfermedad select {
     background-repeat: no-repeat;
-    background-position: right 10px top 50%;
-    background-size: 12px;
-    padding-right: 30px;
+    background-position: right 1.07vh top 50%;
+    background-size: 1.29vh;
+    padding-right: 3.23vh;
 }
 
 .buscar {
@@ -184,7 +184,7 @@ input[type="radio"] {
 }
 
 .buscar button {
-    padding: 10px 20px;
+    padding: 1.07vh 2.15vh;
     font-size: 1.7vh;
     color: #fff;
     background-color: #91C2E3;

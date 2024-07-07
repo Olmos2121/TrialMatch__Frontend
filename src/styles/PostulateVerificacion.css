@@ -4,19 +4,19 @@
     align-items: center;
     min-height: 100vh;
     background-color: #f0f2f5;
-    padding: 20px;
+    padding: 2.15vh;
 }
 
 .veri-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
+    padding: 3.23vh;
     border: 1px solid #ddd;
     border-radius: 10px;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    max-width: 64.72vh;
     text-align: center;
     animation: fadeIn 0.5s ease-in-out;
 }
@@ -24,22 +24,22 @@
 .veri-container h2 {
     margin-bottom: 15px;
     color: #333;
-    font-size: 1.8em;
+    font-size: 3vh;
 }
 
 .veri-container p {
-    margin-bottom: 20px;
+    margin-bottom: 2.15vh;
     color: #666;
-    font-size: 1em;
+    font-size: 1.7vh;
 }
 
 .veri-button-group {
     display: flex;
-    gap: 15px;
+    gap: 1.61vh;
 }
 
 .veri-button {
-    padding: 10px 25px;
+    padding: 1.07vh 2.69vh;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -65,6 +65,17 @@
 .veri-button.submit:hover {
     background-color: #388E3C;
     transform: scale(1.05);
+}
+
+.veri-button.postular.disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.veri-button.postular.disabled:hover {
+    background-color: #ccc;
+    transform: none;
 }
 
 @keyframes fadeIn {

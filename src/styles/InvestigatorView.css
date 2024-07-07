@@ -11,20 +11,20 @@
   background-color: #2c3e50;
   color: white;
   width: 20%;
-  padding: 20px;
+  padding: 2.15vh;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar-title {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 2.58vh;
+  margin-bottom: 2.15vh;
   border-bottom: 2px solid #1abc9c;
   color: #ffffff;
-  padding-bottom: 10px;
+  padding-bottom: 1.07vh;
 }
 
 .sidebar-item {
-  padding: 15px;
+  padding: 1.61vh;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
   border-radius: 5px;
@@ -42,9 +42,9 @@
 
 .main-content {
   width: 80%;
-  padding: 20px;
+  padding: 2.15vh;
   background-color: #ecf0f1;
   border-radius: 10px;
-  margin-left: 20px;
+  margin-left: 2.15vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

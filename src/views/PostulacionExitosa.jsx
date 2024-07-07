@@ -15,11 +15,6 @@ export const PostulacionExitosa = () => {
             try {
                 const trial = await getTrialById(id);
                 setResult(trial.clinicalTrial);
-
-                await applyToTrial(id);
-
-                await sendAcceptanceNotification(id);
-
             } catch (error) {
                 console.log(error);
             }

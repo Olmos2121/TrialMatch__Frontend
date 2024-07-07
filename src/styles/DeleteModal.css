@@ -14,11 +14,11 @@
 
 .delete-modal-content {
     background-color: #ffffff;
-    padding: 40px;
+    padding: 4.31vh;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 90%;
-    max-width: 500px;
+    max-width: 53.93vh;
     text-align: center;
 }
 
@@ -28,25 +28,25 @@
     font-weight: bold;
     cursor: pointer;
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 2.15vh;
+    top: 2.15vh;
 }
 
 .delete-modal-content h2 {
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 2.15vh;
 }
 
 .delete-modal-content p {
     color: #666;
-    margin-bottom: 30px;
+    margin-bottom: 3.23vh;
 }
 
 .delete-modal-content button {
     border: none;
-    padding: 10px 20px;
-    margin: 0 10px;
-    border-radius: 5px;
+    padding: 1.07vh 2.15vh;
+    margin: 0 1.07vh;
+    border-radius: 0.53vh;
     font-weight: bold;
     transition: background-color 0.2s, transform 0.2s;
 }

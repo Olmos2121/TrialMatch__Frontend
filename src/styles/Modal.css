@@ -22,11 +22,11 @@
 
 .modal-content {
     background-color: white;
-    padding: 20px;
+    padding: 2.15vh;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 90%;
-    max-width: 600px;
+    max-width: 64.72vh;
     display: block;
 }
 
@@ -54,8 +54,8 @@ h2 {
 
 label {
     display: block;
-    margin-top: 20px;
-    margin-bottom: 5px;
+    margin-top: 2.15vh;
+    margin-bottom: 0.53vh;
     color: #666;
 }
 
@@ -65,8 +65,8 @@ input[type="number"],
 select,
 textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 1.07vh;
+    margin-bottom: 1.07vh;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -82,13 +82,13 @@ textarea {
 .edit-trial-button {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 1.07vh;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 2.15vh;
 }
 
 .edit-trial-button:hover {
@@ -115,6 +115,6 @@ textarea {
 .edit-trial-select-editable {
     border: 2px solid #2196F3; 
     background-color: #f9f9f9; 
-    padding: 8px; 
+    padding: 0.86vh; 
     border-radius: 4px;
 }

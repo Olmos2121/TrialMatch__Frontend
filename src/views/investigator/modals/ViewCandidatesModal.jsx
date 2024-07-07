@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { getTrialCandidates } from '../../../apis/trialApi';
+import { getUserPostulationInfo } from '../../../apis/userApi';
 import { CandidateModal } from './CandidateModal';
 import '../../../styles/CandidatesModal.css';
 import { toast } from 'react-toastify';
 
 export const ViewCandidatesModal = ({ isOpen, trial, onClose }) => {
     const [candidates, setCandidates] = useState([]);
+    const [userInfo, setUserInfo] = useState({});
     const [isCandidatesModalOpen, setIsCandidatesModalOpen] = useState(false);
     const [selectedCandidate, setSelectedCandidate] = useState(null);
     const [acceptCandidateSuccess, setAcceptCandidateSuccess] = useState(false);
     const [rejectCandidateSuccess, setRejectCandidateSuccess] = useState(false);
 
-    
+
     useEffect(() => {
-        if(acceptCandidateSuccess) {
+        if (acceptCandidateSuccess) {
             refreshCandidates();
             toast.success('Candidato aceptado', {
                 position: 'top-center',
@@ -28,7 +30,7 @@ export const ViewCandidatesModal = ({ isOpen, trial, onClose }) => {
     }, [acceptCandidateSuccess]);
 
     useEffect(() => {
-        if(rejectCandidateSuccess) {
+        if (rejectCandidateSuccess) {
             refreshCandidates();
             toast.error('Candidato rechazado', {
                 position: 'top-center',
@@ -55,9 +57,15 @@ export const ViewCandidatesModal = ({ isOpen, trial, onClose }) => {
         refreshCandidates();
     }, [trial]);
 
-    const handleCandidateCLick = (candidate) => {
-        setIsCandidatesModalOpen(true);
-        setSelectedCandidate(candidate);
+    const handleCandidateCLick = async (candidate) => {
+        try {
+            const response = await getUserPostulationInfo(candidate.id);
+            setUserInfo(response);
+            setIsCandidatesModalOpen(true);
+            setSelectedCandidate(candidate);
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     const handleCandidateClose = async () => {
@@ -98,6 +106,7 @@ export const ViewCandidatesModal = ({ isOpen, trial, onClose }) => {
                     candidate={selectedCandidate}
                     onClose={handleCandidateClose}
                     trial={trial}
+                    userInfo={userInfo}
                     setAcceptCandidateSuccess={setAcceptCandidateSuccess}
                     setRejectCandidateSuccess={setRejectCandidateSuccess}
                 />

@@ -1,7 +1,7 @@
 .study-details {
-    max-width: 800px;
+    max-width: 86.29vh;
     margin: 0 auto;
-    padding: 20px;
+    padding: 2.15vh;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -10,12 +10,12 @@
 .study-details h1 {
     text-align: center;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 2.15vh;
 }
 
 .back-button {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 2.15vh;
     color: #0056b3;
     background: none;
     border: none;
@@ -23,18 +23,18 @@
 }
 
 .summary, .design-eligibility {
-    margin-bottom: 20px;
+    margin-bottom: 2.15vh;
 }
 
 .summary table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 2.15vh;
 }
 
 .summary th, .summary td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 0.86vh;
     text-align: center;
 }
 
@@ -49,8 +49,8 @@
 
 .design h2, .eligibility h2 {
     border-bottom: 2px solid #4fa1d7;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
+    padding-bottom: 0.53vh;
+    margin-bottom: 1.07vh;
 }
 
 .register-button.postulated {
@@ -64,7 +64,7 @@
 .register-button {
     display: block;
     width: 100%;
-    padding: 10px 0;
+    padding: 1.07vh 0;
     background-color: #4fa1d7;
     color: #fff;
     border: none;

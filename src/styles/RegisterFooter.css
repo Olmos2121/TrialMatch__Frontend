@@ -4,7 +4,7 @@
     padding: 20px 0;
     position: relative;
     bottom: 0;
-    height: 3.7em;
+    height: 6.4vh;
     width: 100%;
     justify-content:center;
     display: flex;
@@ -12,6 +12,6 @@
 
 .register_footer a{
     color: #91C2E3;
-    margin-right: 0.8em;
+    margin-right: 1.2vh;
     text-decoration: none;
 }

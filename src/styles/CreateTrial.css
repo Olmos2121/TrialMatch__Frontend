@@ -3,8 +3,9 @@
     justify-content: center;
     align-items: center;
     min-height: 82vh;
-    padding: 20px;
+    padding: 2.15vh;
     background: #f8f9fa;
+}
 
 .create-trial-container {
     background-color: #ffffff;
@@ -12,7 +13,7 @@
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     width: 100%;
-    max-width: 800px;
+    max-width: 86.29vh;
 }
 
 .create-trial h1 {
@@ -66,7 +67,7 @@
 
 .create-trial-form button {
     grid-column: span 2;
-    padding: 12px 0;
+    padding: 1.29vh 0;
     background-color: #0056b3;
     color: white;
     border: none;

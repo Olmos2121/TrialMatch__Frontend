@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/PostulateVerificacion.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { actividadesFisicas } from '../assets/enums/ActividadesFisicas';
@@ -13,33 +13,31 @@ import { historialesMedicos } from '../assets/enums/HistorialesMedicos';
 import { medicamentosActuales } from '../assets/enums/MedicamentosActuales';
 import { nivelesEducativos } from '../assets/enums/NivelesEducativos';
 import { ocupaciones } from '../assets/enums/Ocupaciones';
-import { applyToTrial } from '../apis/trialApi';
+import { applyToTrial, saveUserInfo } from '../apis/trialApi';
 import { sendAcceptanceNotification } from '../apis/userApi';
 
 export const PostulateVerificacion = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [formData, setFormData] = useState({
-        nombre: '',
         fechaNacimiento: '',
-        sexo: '',
+        genero: '',
         direccion: '',
         telefono: '',
-        email: '',
         historialMedico: '',
-        medicamentos: '',
-        alergias: '',
-        cirugias: '',
-        condicionesCronicas: '',
-        razaEtnia: '',
+        medicamentosActuales: '',
+        alergiasConocidas: '',
+        cirugiasPrevias: '',
+        enfermedadesCronicas: '',
         nivelEducativo: '',
         ocupacion: '',
-        fumar: '',
-        alcohol: '',
-        actividadFisica: '',
-        dieta: '',
+        habitosFumar: '',
+        habitosAlcohol: '',
+        habitosEjercicio: '',
+        habitosAlimenticios: '',
         consentimiento: false,
     });
+    const [formValid, setFormValid] = useState(false);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -51,6 +49,7 @@ export const PostulateVerificacion = () => {
 
     const handleSubmit = async () => {
         try {
+            await saveUserInfo(formData, id);
             await applyToTrial(id);
             await sendAcceptanceNotification(id);
             navigate(`/postulacion-exitosa/${id}`);
@@ -58,6 +57,14 @@ export const PostulateVerificacion = () => {
             console.log(error);
         }
     };
+
+    const isFormValid = () => {
+        return Object.values(formData).every((value) => value !== '') && formData.consentimiento === true;
+    }
+
+    useEffect(() => {
+        setFormValid(isFormValid());
+    }, [formData]);
 
     return (
         <div className='veri-page'>
@@ -67,6 +74,7 @@ export const PostulateVerificacion = () => {
                 <div className='veri-datos-postulacion'>
                     <div className='veri-datos-postulacion-column'>
                         <h3>Información Personal</h3>
+                        <label htmlFor="fechaNacimiento">Fecha de nacimiento</label>
                         <input
                             type='date'
                             name='fechaNacimiento'
@@ -74,7 +82,7 @@ export const PostulateVerificacion = () => {
                             value={formData.fechaNacimiento}
                             onChange={handleChange}
                         />
-                        <select name='sexo' value={formData.sexo} onChange={handleChange}>
+                        <select name='genero' value={formData.genero} onChange={handleChange}>
                             <option value=''>Selecciona tu sexo</option>
                             {generos.map((genero, index) => (
                                 <option key={index} value={genero}>{genero}</option>
@@ -103,25 +111,25 @@ export const PostulateVerificacion = () => {
                                 <option key={index} value={historial}>{historial}</option>
                             ))}
                         </select>
-                        <select name='medicamentos' value={formData.medicamentos} onChange={handleChange}>
+                        <select name='medicamentosActuales' value={formData.medicamentosActuales} onChange={handleChange}>
                             <option value=''>Selecciona tus medicamentos actuales</option>
                             {medicamentosActuales.map((medicamento, index) => (
                                 <option key={index} value={medicamento}>{medicamento}</option>
                             ))}
                         </select>
-                        <select name='alergias' value={formData.alergias} onChange={handleChange}>
+                        <select name='alergiasConocidas' value={formData.alergiasConocidas} onChange={handleChange}>
                             <option value=''>Selecciona tus alergias conocidas</option>
                             {alergiasConocidas.map((alergia, index) => (
                                 <option key={index} value={alergia}>{alergia}</option>
                             ))}
                         </select>
-                        <select name='cirugias' value={formData.cirugias} onChange={handleChange}>
+                        <select name='cirugiasPrevias' value={formData.cirugiasPrevias} onChange={handleChange}>
                             <option value=''>Selecciona tus cirugías previas</option>
                             {cirugiasPrevias.map((cirugia, index) => (
                                 <option key={index} value={cirugia}>{cirugia}</option>
                             ))}
                         </select>
-                        <select name='condicionesCronicas' value={formData.condicionesCronicas} onChange={handleChange}>
+                        <select name='enfermedadesCronicas' value={formData.enfermedadesCronicas} onChange={handleChange}>
                             <option value=''>Selecciona tus condiciones crónicas</option>
                             {condicionesCronicas.map((condicion, index) => (
                                 <option key={index} value={condicion}>{condicion}</option>
@@ -141,25 +149,25 @@ export const PostulateVerificacion = () => {
                             ))}
                         </select>
                         <h3>Información sobre el Estilo de Vida</h3>
-                        <select name='fumar' value={formData.fumar} onChange={handleChange}>
+                        <select name='habitosFumar' value={formData.habitosFumar} onChange={handleChange}>
                             <option value=''>Selecciona tus hábitos de fumar</option>
                             {habitosFumar.map((habito, index) => (
                                 <option key={index} value={habito}>{habito}</option>
                             ))}
                         </select>
-                        <select name='alcohol' value={formData.alcohol} onChange={handleChange}>
+                        <select name='habitosAlcohol' value={formData.habitosAlcohol} onChange={handleChange}>
                             <option value=''>Selecciona tu consumo de alcohol</option>
                             {consumoAlcohol.map((consumo, index) => (
                                 <option key={index} value={consumo}>{consumo}</option>
                             ))}
                         </select>
-                        <select name='actividadFisica' value={formData.actividadFisica} onChange={handleChange}>
+                        <select name='habitosEjercicio' value={formData.habitosEjercicio} onChange={handleChange}>
                             <option value=''>Selecciona tu actividad física</option>
                             {actividadesFisicas.map((actividad, index) => (
                                 <option key={index} value={actividad}>{actividad}</option>
                             ))}
                         </select>
-                        <select name='dieta' value={formData.dieta} onChange={handleChange}>
+                        <select name='habitosAlimenticios' value={formData.habitosAlimenticios} onChange={handleChange}>
                             <option value=''>Selecciona tu dieta y nutrición</option>
                             {dietasYNutricion.map((dieta, index) => (
                                 <option key={index} value={dieta}>{dieta}</option>
@@ -185,11 +193,11 @@ export const PostulateVerificacion = () => {
                     >Cancelar
                     </button>
                     <button
-                        className='veri-button submit'
+                        className={isFormValid() ? 'veri-button submit' : 'veri-button postular disabled'}
                         onClick={handleSubmit}
-                        disabled={!formData.consentimiento}
+                        disabled={!isFormValid()}
                     >
-                        Postularse
+                        {isFormValid() ? 'Postularme' : 'Completa todos los campos'}
                     </button>
                 </div>
             </div>

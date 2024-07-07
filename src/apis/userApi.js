@@ -43,3 +43,18 @@ export const sendAcceptanceNotification = async (id) => {
         throw new Error('Error al enviar la notificación de aceptación')
     }
 }
+
+export const getUserPostulationInfo = async (id) => {
+    const response = await fetch(`${API_BASE_URL}/user/postulationInfo/${id}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Error al obtener la información de postulación')
+    }
+
+    return response.json();
+}

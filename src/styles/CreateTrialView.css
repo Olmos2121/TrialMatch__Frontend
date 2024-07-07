@@ -1,30 +1,30 @@
 .create-trial-container {
-    padding: 30px;
+    padding: 3.23vh;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    max-width: 600px;
-    margin: 40px auto;
+    max-width: 64.72vh;
+    margin: 4.31vh auto;
     font-family: 'Roboto', sans-serif;
 }
 
 .create-trial-title {
-    font-size: 28px;
+    font-size: 3.02vh;
     font-weight: 600;
     color: #333;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 2.15vh;
 }
 
 .create-trial-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 2.15vh;
 }
 
 .create-trial-input,
 .create-trial-select {
-    padding: 12px 15px;
+    padding: 1.29vh 1.61vh;
     border-radius: 8px;
     border: 1px solid #ddd;
     font-size: 16px;
@@ -40,7 +40,7 @@
 
 .age-range-container {
     display: flex;
-    gap: 10px;
+    gap: 1.07vh;
     align-items: center;
 }
 
@@ -49,12 +49,12 @@
 }
 
 .create-trial-button {
-    padding: 12px 20px;
+    padding: 1.29vh 2.15vh;
     border-radius: 8px;
     border: none;
     background-color: #007bff;
     color: white;
-    font-size: 18px;
+    font-size: 1.94vh;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
@@ -68,14 +68,14 @@
 .description-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 1.07vh;
 }
 
 .create-trial-textarea {
-    padding: 12px 15px;
+    padding: 1.29vh 1.61vh;
     border-radius: 8px;
     border: 1px solid #ddd;
-    font-size: 16px;
+    font-size: 1.72vh;
     background-color: #fafafa;
     transition: border-color 0.3s;
     resize: none;
