@@ -3,7 +3,7 @@ import { removeParticipant } from '../../../apis/trialApi'
 import { MessageModal } from './MessageModal'
 import { toast } from 'react-toastify'
 
-export const ParticipantModal = ({ isOpen, participant, onClose, trial, setRemoveParticipantSuccess }) => {
+export const ParticipantModal = ({ isOpen, participant, onClose, trial, userInfo, setRemoveParticipantSuccess }) => {
     const [isMessageModalOpen, setIsMessageModalOpen] = useState(false)
     const [sendMessageSuccess, setSendMessageSuccess] = useState(false)
 
@@ -56,14 +56,52 @@ export const ParticipantModal = ({ isOpen, participant, onClose, trial, setRemov
         setRemoveParticipantSuccess(false)
         onClose()
     }
-
+    
     return (
         <div className={`modal ${isOpen ? 'is-open' : ''}`}>
             <div className="modal-content">
                 <h2>Información del Participante</h2>
-                <div className='candidate-info'>
-                    <h2>Nombre: {participant.firstname} {participant.lastname}</h2>
-                    <h2>Email: {participant.email}</h2>
+                <div className='two-column-container-user'>
+                    <div className='column-user'>
+                        <label>Nombre:</label>
+                        <p>{participant.firstname} {participant.lastname}</p>
+                        <label>Email:</label>
+                        <p>{participant.email}</p>
+                        <label>Fecha de Nacimiento:</label>
+                        <p>{userInfo.fechaNacimiento}</p>
+                        <label>Género:</label>
+                        <p>{userInfo.genero}</p>
+                        <label>Dirección:</label>
+                        <p>{userInfo.direccion}</p>
+                        <label>Teléfono:</label>
+                        <p>{userInfo.telefono}</p>
+                        <label>Historial Médico:</label>
+                        <p>{userInfo.historialMedico}</p>
+                        <label>Medicamentos Actuales:</label>
+                        <p>{userInfo.medicamentosActuales}</p>
+                        <label>Alergias Conocidas:</label>
+                        <p>{userInfo.alergiasConocidas}</p>
+                    </div>
+                    <div className='column-user'>
+                        <label>Cirugías Previas:</label>
+                        <p>{userInfo.cirugiasPrevias}</p>
+                        <label>Enfermedades Crónicas:</label>
+                        <p>{userInfo.enfermedadesCronicas}</p>
+                        <label>Nivel Educativo:</label>
+                        <p>{userInfo.nivelEducativo}</p>
+                        <label>Ocupación:</label>
+                        <p>{userInfo.ocupacion}</p>
+                        <label>Hábitos de Fumar:</label>
+                        <p>{userInfo.habitosFumar}</p>
+                        <label>Hábitos de Alcohol:</label>
+                        <p>{userInfo.habitosAlcohol}</p>
+                        <label>Hábitos de Ejercicio:</label>
+                        <p>{userInfo.habitosEjercicio}</p>
+                        <label>Hábitos Alimenticios:</label>
+                        <p>{userInfo.habitosAlimenticios}</p>
+                        <label>Consentimiento:</label>
+                        <p>{userInfo.consentimiento ? 'Sí' : 'No'}</p>
+                    </div>
                 </div>
                 <div className='buttons-container'>
                     <button className="modal-button" onClick={handleMessageOpen}>Enviar mensaje</button>
@@ -83,3 +121,4 @@ export const ParticipantModal = ({ isOpen, participant, onClose, trial, setRemov
         </div>
     )
 }
+ 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { acceptApply, rejectApply } from '../../../apis/trialApi';
-import { getUserPostulationInfo } from '../../../apis/userApi';
 import '../../../styles/CandidateModal.css';
 
 export const CandidateModal = ({ isOpen, candidate, onClose, trial, userInfo, setAcceptCandidateSuccess, setRejectCandidateSuccess }) => {
@@ -25,6 +24,8 @@ export const CandidateModal = ({ isOpen, candidate, onClose, trial, userInfo, se
             console.error(error);
         }
     }
+
+    console.log(userInfo);
 
     return (
         <div className={`modal ${isOpen ? 'is-open' : ''}`}>

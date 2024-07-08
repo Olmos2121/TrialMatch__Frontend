@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { getTrialParticipants } from '../../../apis/trialApi';
+import { getUserPostulationInfo } from '../../../apis/userApi';
 import { ParticipantModal } from './ParticipantModal';
 import { toast } from 'react-toastify';
 import { MessageToAllModal } from './MessageToAllModal';
 
 export const ViewParticipantsModal = ({ isOpen, trial, onClose }) => {
     const [participants, setParticipants] = useState([]);
+    const [userInfo, setUserInfo] = useState({});
     const [isParticipantsModalOpen, setIsParticipantsModalOpen] = useState(false);
     const [selectedParticipant, setSelectedParticipant] = useState(null);
     const [removeParticipantSuccess, setRemoveParticipantSuccess] = useState(false);
@@ -51,7 +53,7 @@ export const ViewParticipantsModal = ({ isOpen, trial, onClose }) => {
     };
 
     const handleOpenMessageToAllModal = () => {
-        if(participants.length <= 0) {
+        if (participants.length <= 0) {
             return toast.error('No hay participantes en el ensayo', {
                 position: 'top-center',
                 autoClose: 1500,
@@ -69,9 +71,16 @@ export const ViewParticipantsModal = ({ isOpen, trial, onClose }) => {
         refreshParticipants();
     }, [trial]);
 
-    const handleParticipantCLick = (participant) => {
-        setIsParticipantsModalOpen(true);
-        setSelectedParticipant(participant);
+    const handleParticipantCLick = async (participant) => {
+        try {
+            const response = await getUserPostulationInfo(participant.id);
+            setUserInfo(response);
+            console.log(userInfo)
+            setIsParticipantsModalOpen(true);
+            setSelectedParticipant(participant);
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     const handleParticipantClose = async () => {
@@ -103,7 +112,9 @@ export const ViewParticipantsModal = ({ isOpen, trial, onClose }) => {
                         ))}
                     </div>
                 </div>
-                <button className="send-message-modal-button" onClick={handleOpenMessageToAllModal}>Enviar mensaje a todos los participantes</button>
+                {participants.length > 0 && (
+                    <button className="send-message-modal-button" onClick={handleOpenMessageToAllModal}>Enviar mensaje a todos los participantes</button>
+                )}
                 <button className="close-modal-button" onClick={onClose}>Cerrar</button>
             </div>
             {selectedParticipant &&
@@ -112,6 +123,7 @@ export const ViewParticipantsModal = ({ isOpen, trial, onClose }) => {
                     participant={selectedParticipant}
                     onClose={handleParticipantClose}
                     trial={trial}
+                    userInfo={userInfo}
                     setRemoveParticipantSuccess={setRemoveParticipantSuccess}
                 />
             }

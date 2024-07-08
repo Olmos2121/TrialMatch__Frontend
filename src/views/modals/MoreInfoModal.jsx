@@ -9,7 +9,9 @@ export const MoreInfoModal = ({ isOpen, toggleModal, trial }) => {
             <div className="contentInfo">
                 <h2>Más información sobre el ensayo</h2>
                 <p><strong>Descripción:</strong></p>
-                <p>{trial.descripcion}</p>
+                <div className='content-description-container'>
+                    <p>{trial.descripcion}</p>
+                </div>
                 <button onClick={toggleModal}>Cerrar</button>
             </div>
         </div>
