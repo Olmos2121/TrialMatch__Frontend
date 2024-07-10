@@ -15,6 +15,7 @@ import { nivelesEducativos } from '../assets/enums/NivelesEducativos';
 import { ocupaciones } from '../assets/enums/Ocupaciones';
 import { applyToTrial, saveUserInfo } from '../apis/trialApi';
 import { sendAcceptanceNotification } from '../apis/userApi';
+import { LoadingModal } from './modals/LoadingModal';
 
 export const PostulateVerificacion = () => {
     const navigate = useNavigate();
@@ -38,6 +39,7 @@ export const PostulateVerificacion = () => {
         consentimiento: false,
     });
     const [formValid, setFormValid] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -48,6 +50,7 @@ export const PostulateVerificacion = () => {
     };
 
     const handleSubmit = async () => {
+        setIsLoading(true);
         try {
             await saveUserInfo(formData, id);
             await applyToTrial(id);
@@ -55,6 +58,8 @@ export const PostulateVerificacion = () => {
             navigate(`/postulacion-exitosa/${id}`);
         } catch (error) {
             console.log(error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -201,6 +206,9 @@ export const PostulateVerificacion = () => {
                     </button>
                 </div>
             </div>
+            {isLoading && <LoadingModal
+                isOpen={isLoading}
+            />}
         </div>
     );
 }
