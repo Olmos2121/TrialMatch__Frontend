@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../../styles/MessageModal.css'
 import { sendMessageToParticipant } from '../../../apis/trialApi'
 import { toast } from 'react-toastify'
+import { LoadingModal } from '../../modals/LoadingModal'
 
 export const MessageModal = ({ isOpen, onClose, participant, trial, setSuccessMessage }) => {
+    const [isLoading, setIsLoading] = useState(false);
     const messageError = () => {
         toast.error('Error al enviar el mensaje', {
             position: 'top-center',
@@ -18,6 +20,7 @@ export const MessageModal = ({ isOpen, onClose, participant, trial, setSuccessMe
 
     const handleSendMessage = async () => {
         const message = document.querySelector('.message-modal-textarea').value
+        setIsLoading(true);
         try {
             await sendMessageToParticipant(trial.id, participant.id, message)
             setSuccessMessage(true)
@@ -25,6 +28,8 @@ export const MessageModal = ({ isOpen, onClose, participant, trial, setSuccessMe
         } catch (error) {
             messageError()
             console.error(error)
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -41,6 +46,9 @@ export const MessageModal = ({ isOpen, onClose, participant, trial, setSuccessMe
                 <button className="send-message-modal-button" onClick={handleSendMessage}>Enviar</button>
                 <button className="close-modal-button" onClick={handleCloseModal}>Cerrar</button>
             </div>
+            {isLoading && <LoadingModal
+                isOpen={isLoading}
+            />}
         </div>
     )
 }
